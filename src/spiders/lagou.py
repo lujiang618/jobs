@@ -1,5 +1,8 @@
 # coding: utf-8
 
+import random
+import time
+
 import requests
 from lxml import etree
 
@@ -24,6 +27,7 @@ class Lagou(BaseSpider):
 
     def crawl(self):
         for i in range(1, 31):
+            print("开始获取第%d页数据")
             s = requests.get(url="https://www.lagou.com/jobs/list_运维?city=%E6%88%90%E9%83%BD&cl=false&fromSearch=true&labelWords=&suginput=",
                              headers=get_header(), timeout=3)
 
@@ -35,7 +39,7 @@ class Lagou(BaseSpider):
             text = req.json()
 
             if "content" not in text.keys():
-                print("在第%d页获取不到数据"%i)
+                print("在第%d页获取不到数据，result:%s" % (i, text))
                 break
 
             datas = text['content']['positionResult']['result']
@@ -67,3 +71,8 @@ class Lagou(BaseSpider):
                     "职位信息": detail
                 }
                 self.data.put(data)
+                s_time = random.randint(2, 5)
+                time.sleep(s_time)
+
+            s_time = random.randint(3, 10)
+            time.sleep(s_time)

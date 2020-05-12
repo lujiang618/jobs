@@ -7,6 +7,7 @@
 
 
 # 技术选择
-1. request库
-2. lxml库
-3. 
+1. request
+2. lxml
+3. pyecharts
+4. faker
