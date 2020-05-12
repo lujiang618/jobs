@@ -11,7 +11,7 @@ from pkg.utils.utils import get_header
 from .baseSpider import BaseSpider
 
 
-class Lagou(BaseSpider):
+class LaGou(BaseSpider):
     website = "拉勾网"
     base_url = "https://www.lagou.com/jobs/positionAjax.json"
     header = {
@@ -23,7 +23,7 @@ class Lagou(BaseSpider):
     path = dir_source
 
     def __init__(self, keyword, city):
-        super(Lagou, self).__init__(keyword, city)
+        super(LaGou, self).__init__(keyword, city)
 
     def crawl(self):
         for i in range(1, 31):

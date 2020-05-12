@@ -34,11 +34,13 @@ if os.path.exists(root_dir + '/config/config.local.yaml'):
     config_file = root_dir + '/config/config.local.yaml'
 
 dir_data = root_dir + '/data/'  # data 目录
+dir_areas = dir_data + '/areas/'  # data 目录
 dir_source = dir_data + 'source-data'  # data 目录
 
 
 data_path_list = [
     dir_data,
+    dir_areas,
     dir_source,
 ]
 

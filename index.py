@@ -2,10 +2,10 @@
 
 import os
 
-from src.spiders.lagou import Lagou
+from src.spiders.lagou import LaGou
 
 if __name__ == '__main__':
     city = input('请输入城市名：')
     keyword = input('请输入搜索关键词：')
     if keyword != None and city != None:
-        Lagou(city=city, keyword=keyword).run()
+        LaGou(city=city, keyword=keyword).run()
