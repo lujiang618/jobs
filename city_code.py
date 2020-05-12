@@ -7,12 +7,9 @@ from pkg.config import dir_areas
 
 if __name__ == '__main__':
     result = requests.get('http://www.mca.gov.cn/article/sj/xzqh/2020/2020/202003301019.html')
-    # print(result.text)
 
     bs = BeautifulSoup(result.text, "html.parser")
 
-    # print(bs.find_all("td",))
-    # print(bs.table)
     city = []
     province = []
     areas = []
@@ -22,7 +19,6 @@ if __name__ == '__main__':
         area = {}
         area_type = ''
         for td in tr.find_all(name="td"):
-            # print(td)
             # 省和市
             if td.get("class") and td['class'][0] == "xl7030721":
                 # print(td.get_text())
@@ -30,8 +26,6 @@ if __name__ == '__main__':
                     area['code'] = td.get_text().strip()
                 else:
                     area['name'] = td.get_text().strip()
-
-                # print(area)
                 # 市
                 if td.find(name="span") and not td.get_text().isdigit():
                     area_type = "city"
@@ -59,12 +53,7 @@ if __name__ == '__main__':
             area['city'] = current_city if current_city else current_province
             areas.append(area)
 
-    print("*" * 100)
-    print(province)
-    print("*" * 100)
-    print(city)
-    print("*" * 100)
-    print(areas)
+    print("数据获取完成，开始保存")
     province = pd.DataFrame(province)
     province.to_csv(dir_areas+"province.csv", encoding='utf_8_sig', index=False)
     city = pd.DataFrame(city)
