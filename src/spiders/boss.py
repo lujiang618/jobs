@@ -12,7 +12,7 @@ from .baseSpider import BaseSpider
 
 
 class Boss(BaseSpider):
-    website = "智联招聘"
+    website = "Boss直聘"
 
     base_url = ""
     header = {

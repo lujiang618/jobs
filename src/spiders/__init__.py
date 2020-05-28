@@ -1,2 +1,2 @@
 
-from .lagou import Lagou
+from .lagou import LaGou
